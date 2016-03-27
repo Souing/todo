@@ -12,10 +12,12 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
+// 设置模板引擎
+app.set('view engine', 'html');
+//设置一下对于html格式的文件，渲染的时候委托ejs的渲染方面来进行渲染
+app.engine('html', require('ejs').renderFile);
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
