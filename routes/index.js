@@ -38,6 +38,7 @@ router.route('/todos/:_id').delete(function(req,res){
 })
 router.route('/todos/delete').post(function(req,res){
     var ids = req.body;
+    console.log(ids);
     todoModel.remove({_id:{$in:ids}},function(err,result){
         if (err) {
             res.send({code: 0, msg: '删除失败!'});
